@@ -1,16 +1,6 @@
 [
   {
     "ContainingType": "Lost_And_Found_Web_Portal.Api.Controllers.AuthenticationController",
-    "Method": "GetCurrentUserRoles",
-    "RelativePath": "Authentication/GetCurrentUserRoles",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Lost_And_Found_Web_Portal.Api.Controllers.AuthenticationController",
     "Method": "Login",
     "RelativePath": "Authentication/Login",
     "HttpMethod": "POST",

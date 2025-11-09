@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lost_And_Found_Web_Portal.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee0da26603226c4dc2ff8d3b1144f069c8c7506b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c0de27779f37b19e5b7d7d7a9aa8d90b4af5d60")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lost_And_Found_Web_Portal.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lost_And_Found_Web_Portal.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

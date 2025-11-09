@@ -3,6 +3,58 @@
   "WorkspaceRootPath": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\services\\lostandfoundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\startupextensions\\configureservicesextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:startupextensions\\configureservicesextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\helpers\\stringmatchhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\dto\\founditemtoadddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\dto\\lostitemtoadddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\domain\\entities\\founditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\domain\\entities\\lostitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\controllers\\lostandfoundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:controllers\\lostandfoundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FE52927-4E70-49E3-9CB6-05462DF2F55E}|..\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.infrastructure\\repositories\\lostandfoundrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\domain\\repositorycontracts\\ilostandfoundrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\lost_and_found_web_portal.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FE52927-4E70-49E3-9CB6-05462DF2F55E}|..\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.infrastructure\\lost_and_found_web_portal.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\servicecontracts\\ilostandfoundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\middleware\\tokenblacklistmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:middleware\\tokenblacklistmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -16,22 +68,7 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\startupextensions\\configureservicesextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:startupextensions\\configureservicesextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\helpers\\tokencreatorhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{58B3DB15-C6C5-48ED-83EC-DD23314E98F3}|..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.core\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EDD85934-20D3-478C-8371-216B27957109}|Lost_And_Found_Web_Portal.Api.csproj|f:\\attachment\\github\\lost_and_found_web_portal_synesis_it\\server\\lost_and_found_web_portal.api\\filters\\modelstatehandlefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -83,8 +120,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StringMatchHelper.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\StringMatchHelper.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Helpers\\StringMatchHelper.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\StringMatchHelper.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Helpers\\StringMatchHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:57:53.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FoundItemToAddDTO.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\FoundItemToAddDTO.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\DTO\\FoundItemToAddDTO.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\FoundItemToAddDTO.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\DTO\\FoundItemToAddDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:54:08.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LostItemToAddDTO.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\LostItemToAddDTO.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\DTO\\LostItemToAddDTO.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\LostItemToAddDTO.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\DTO\\LostItemToAddDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:53:40.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FoundItem.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\FoundItem.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\FoundItem.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\FoundItem.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\FoundItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:53:11.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LostItem.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\LostItem.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\LostItem.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\LostItem.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Domain\\Entities\\LostItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:52:51.225Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -95,20 +197,137 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TokenCreatorHelper.cs",
-              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
-              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
-              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
-              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ConfigureServicesExtensions.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\StartupExtensions\\ConfigureServicesExtensions.cs",
+              "RelativeDocumentMoniker": "StartupExtensions\\ConfigureServicesExtensions.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\StartupExtensions\\ConfigureServicesExtensions.cs",
+              "RelativeToolTip": "StartupExtensions\\ConfigureServicesExtensions.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAQwB4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T07:39:53.85Z",
+              "WhenOpened": "2025-11-08T07:42:27.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAswB4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T06:25:26.685Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LostAndFoundService.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\LostAndFoundService.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Services\\LostAndFoundService.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\LostAndFoundService.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Services\\LostAndFoundService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:34:28.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LostAndFoundRepository.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Repositories\\LostAndFoundRepository.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Infrastructure\\Repositories\\LostAndFoundRepository.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Repositories\\LostAndFoundRepository.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Infrastructure\\Repositories\\LostAndFoundRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:43:51.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ILostAndFoundRepository.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\RepositoryContracts\\ILostAndFoundRepository.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Domain\\RepositoryContracts\\ILostAndFoundRepository.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\RepositoryContracts\\ILostAndFoundRepository.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Domain\\RepositoryContracts\\ILostAndFoundRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:48:15.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Lost_And_Found_Web_Portal.Core",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-09T12:45:11.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "Controllers\\AuthenticationController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAuwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T12:58:01.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Lost_And_Found_Web_Portal.Infrastructure",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-09T12:41:44.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LostAndFoundController.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Controllers\\LostAndFoundController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LostAndFoundController.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Controllers\\LostAndFoundController.cs",
+              "RelativeToolTip": "Controllers\\LostAndFoundController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:33:25.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ILostAndFoundService.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\ServiceContracts\\ILostAndFoundService.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\ServiceContracts\\ILostAndFoundService.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\ServiceContracts\\ILostAndFoundService.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\ServiceContracts\\ILostAndFoundService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T12:34:59.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "TokenBlacklistMiddleware.cs",
               "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Middleware\\TokenBlacklistMiddleware.cs",
               "RelativeDocumentMoniker": "Middleware\\TokenBlacklistMiddleware.cs",
@@ -121,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 18,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\ServiceContracts\\IAuthService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\ServiceContracts\\IAuthService.cs",
@@ -129,12 +348,11 @@
               "RelativeToolTip": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\ServiceContracts\\IAuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T13:00:14.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-08T13:00:14.516Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 17,
               "Title": "AuthService.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
@@ -142,12 +360,11 @@
               "RelativeToolTip": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T12:59:43.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-08T12:59:43.395Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 19,
               "Title": "TokenCreatorHelper.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
@@ -155,38 +372,11 @@
               "RelativeToolTip": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAB0AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T17:12:25.694Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-08T17:12:25.694Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ConfigureServicesExtensions.cs",
-              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\StartupExtensions\\ConfigureServicesExtensions.cs",
-              "RelativeDocumentMoniker": "StartupExtensions\\ConfigureServicesExtensions.cs",
-              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\StartupExtensions\\ConfigureServicesExtensions.cs",
-              "RelativeToolTip": "StartupExtensions\\ConfigureServicesExtensions.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T07:42:27.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthenticationController.cs",
-              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Controllers\\AuthenticationController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
-              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Controllers\\AuthenticationController.cs",
-              "RelativeToolTip": "Controllers\\AuthenticationController.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAowCUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T12:58:01.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 21,
               "Title": "ModelStateHandleFilter.cs",
               "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Filters\\ModelStateHandleFilter.cs",
               "RelativeDocumentMoniker": "Filters\\ModelStateHandleFilter.cs",
@@ -194,38 +384,36 @@
               "RelativeToolTip": "Filters\\ModelStateHandleFilter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-08T13:39:34.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-08T13:39:34.595Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-08T05:40:02.704Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
-              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
-              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAswBsAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 20,
+              "Title": "TokenCreatorHelper.cs",
+              "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
+              "RelativeDocumentMoniker": "..\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
+              "ToolTip": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
+              "RelativeToolTip": "..\\Lost_And_Found_Web_Portal.Core\\Helpers\\TokenCreatorHelper.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T06:25:26.685Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-09T07:39:53.85Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 24,
               "Title": "ITokenBlacklistRepository.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\ITokenBlacklistRepository.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Helpers\\ITokenBlacklistRepository.cs",
@@ -237,7 +425,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 25,
               "Title": "IAuthenticationRepositoy.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\RepositoryContracts\\IAuthenticationRepositoy.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\RepositoryContracts\\IAuthenticationRepositoy.cs",
@@ -249,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 26,
               "Title": "LoginDTO.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\LoginDTO.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\LoginDTO.cs",
@@ -261,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 27,
               "Title": "RegisterDTO.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\RegisterDTO.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\DTO\\RegisterDTO.cs",
@@ -273,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 28,
               "Title": "AuthenticationRepositoy.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Repositories\\AuthenticationRepositoy.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Repositories\\AuthenticationRepositoy.cs",
@@ -285,7 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 29,
               "Title": "UserTypes.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Enums\\UserTypes.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Enums\\UserTypes.cs",
@@ -297,7 +485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 22,
               "Title": "Lost_And_Found_Web_Portal.Api.csproj",
               "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Lost_And_Found_Web_Portal.Api.csproj",
               "RelativeDocumentMoniker": "Lost_And_Found_Web_Portal.Api.csproj",
@@ -305,11 +493,12 @@
               "RelativeToolTip": "Lost_And_Found_Web_Portal.Api.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-08T14:02:15.334Z"
+              "WhenOpened": "2025-11-08T14:02:15.334Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 23,
               "Title": "launchSettings.json",
               "DocumentMoniker": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -321,7 +510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 30,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\IdentityEntities\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\IdentityEntities\\ApplicationUser.cs",
@@ -333,7 +522,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 31,
               "Title": "ApplicationRole.cs",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\IdentityEntities\\ApplicationRole.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Domain\\IdentityEntities\\ApplicationRole.cs",
@@ -345,7 +534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 32,
               "Title": "Lost_And_Found_Web_Portal.Infrastructure.csproj",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj",
@@ -357,7 +546,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 33,
               "Title": "Lost_And_Found_Web_Portal.Core.csproj",
               "DocumentMoniker": "F:\\Attachment\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Lost_and_Found_Web_Portal_App\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",

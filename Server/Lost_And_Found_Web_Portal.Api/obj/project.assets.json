@@ -9139,11 +9139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Lost_And_Found_Web_Portal.Api.csproj",
+      "projectUniqueName": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Lost_And_Found_Web_Portal.Api.csproj",
       "projectName": "Lost_And_Found_Web_Portal.Api",
-      "projectPath": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Lost_And_Found_Web_Portal.Api.csproj",
+      "projectPath": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\Lost_And_Found_Web_Portal.Api.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\obj\\",
+      "outputPath": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -9165,11 +9165,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj": {
-              "projectPath": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj"
+            "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj": {
+              "projectPath": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj"
             },
-            "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj": {
-              "projectPath": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj"
+            "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj": {
+              "projectPath": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Infrastructure\\Lost_And_Found_Web_Portal.Infrastructure.csproj"
             }
           }
         }

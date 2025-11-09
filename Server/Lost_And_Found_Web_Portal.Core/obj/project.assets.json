@@ -2127,11 +2127,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
+      "projectUniqueName": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
       "projectName": "Lost_And_Found_Web_Portal.Core",
-      "projectPath": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
+      "projectPath": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\Lost_And_Found_Web_Portal.Core.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "F:\\Attachment\\GitHub\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\obj\\",
+      "outputPath": "F:\\Attachment\\Github2\\Lost_and_Found_Web_Portal_Synesis_IT\\Server\\Lost_And_Found_Web_Portal.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

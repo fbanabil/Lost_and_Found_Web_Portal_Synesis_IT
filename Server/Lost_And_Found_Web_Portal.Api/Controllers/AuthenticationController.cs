@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Security.Claims;
 
 namespace Lost_And_Found_Web_Portal.Api.Controllers
@@ -63,8 +64,9 @@ namespace Lost_And_Found_Web_Portal.Api.Controllers
                     await _roleManager.CreateAsync(userRole);
                 }
                 await _userManager.AddToRoleAsync(user, UserTypes.User.ToString());
-
-                return Ok("User registered successfully.");
+                List<String> roles =  _userManager.GetRolesAsync(user).Result.ToList();
+                string token = await _authenticationService.GetToken(user.Email, roles);
+                return Ok(new {message = "Register Successfull",token, personName = user.PersonName });
             }
             else
             {
@@ -104,6 +106,8 @@ namespace Lost_And_Found_Web_Portal.Api.Controllers
                 }
                 await _userManager.AddToRoleAsync(admin, UserTypes.Admin.ToString());
 
+
+
                 return Ok("User registered successfully.");
             }
             else
@@ -128,7 +132,7 @@ namespace Lost_And_Found_Web_Portal.Api.Controllers
                 string token = await _authenticationService.GetToken(user.Email, roles);
 
                 _logger.LogInformation("Login successful for user: {UserName}", loginDTO.UserName);
-                return Ok(new { message = "Login Success", token });
+                return Ok(new { message = "Login Success", token, personName = user.PersonName });
             }
             else
             {

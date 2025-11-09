@@ -1,8 +1,10 @@
 ﻿using Lost_And_Found_Web_Portal.Api.Filters;
 using Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities;
+using Lost_And_Found_Web_Portal.Core.Domain.RepositoryContracts;
 using Lost_And_Found_Web_Portal.Core.ServiceContracts;
 using Lost_And_Found_Web_Portal.Core.Services;
 using Lost_And_Found_Web_Portal.Infrastructure.DbContext;
+using Lost_And_Found_Web_Portal.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -26,8 +28,11 @@ namespace Lost_And_Found_Web_Portal.Api.StartupExtensions
 
 
             builder.Services.AddScoped<ModelStateHandleFilter>();
+            
 
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<ILostAndFoundService, LostAndFoundService>();
+            builder.Services.AddScoped<ILostAndFoundRepository,LostAndFoundRepository>();
 
             builder.Services.AddSingleton<ITokenBlacklistRepository, TokenBlacklistRepository>();
 
