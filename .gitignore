@@ -15,3 +15,10 @@ lost-found-portal/.vite/
 lost-found-portal/.DS_Store
 lost-found-portal/npm-debug.log*
 lost-found-portal/yarn-error.log*
+
+# Ignore obj folders (compiled intermediate files)
+lost-found-portal/obj/
+lost-found-portal/**/obj/
+# Ignore server obj folders
+lost-found-portal/server/obj/
+lost-found-portal/server/**/obj/
