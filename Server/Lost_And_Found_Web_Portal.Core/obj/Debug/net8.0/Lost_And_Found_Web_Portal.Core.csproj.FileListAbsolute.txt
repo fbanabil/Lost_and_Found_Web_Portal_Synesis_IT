@@ -23,3 +23,16 @@ F:\Attachment\GitHub\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_
 F:\Attachment\GitHub\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\refint\Lost_And_Found_Web_Portal.Core.dll
 F:\Attachment\GitHub\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.pdb
 F:\Attachment\GitHub\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\ref\Lost_And_Found_Web_Portal.Core.dll
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\bin\Debug\net8.0\Lost_And_Found_Web_Portal.Core.deps.json
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\bin\Debug\net8.0\Lost_And_Found_Web_Portal.Core.dll
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\bin\Debug\net8.0\Lost_And_Found_Web_Portal.Core.pdb
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.csproj.AssemblyReference.cache
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.AssemblyInfoInputs.cache
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.AssemblyInfo.cs
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.csproj.CoreCompileInputs.cache
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.sourcelink.json
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.dll
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\refint\Lost_And_Found_Web_Portal.Core.dll
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\Lost_And_Found_Web_Portal.Core.pdb
+F:\Attachment\Github2\Lost_and_Found_Web_Portal_Synesis_IT\Server\Lost_And_Found_Web_Portal.Core\obj\Debug\net8.0\ref\Lost_And_Found_Web_Portal.Core.dll

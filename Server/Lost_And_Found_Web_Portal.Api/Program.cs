@@ -21,6 +21,7 @@ else
     app.UseSwaggerUI();
     app.UseCors("ProdCors");
 }
+app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 

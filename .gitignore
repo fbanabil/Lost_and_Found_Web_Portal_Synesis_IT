@@ -22,3 +22,53 @@ lost-found-portal/**/obj/
 # Ignore server obj folders
 lost-found-portal/server/obj/
 lost-found-portal/server/**/obj/
+obj
+obj/
+*obj
+*obj/
+Server\Lost_And_Found_Web_Portal.Api\obj
+# Build outputs
+lost-found-portal/server/bin/
+lost-found-portal/server/**/bin/
+lost-found-portal/server/Debug/
+lost-found-portal/server/Release/
+lost-found-portal/server/**/Debug/
+lost-found-portal/server/**/Release/
+
+# Compiled/binary artifacts
+lost-found-portal/server/**/*.dll
+lost-found-portal/server/**/*.exe
+lost-found-portal/server/**/*.pdb
+lost-found-portal/server/**/*.log
+
+# IDE / editor files
+lost-found-portal/server/.vs/
+lost-found-portal/server/.vscode/
+lost-found-portal/server/.idea/
+lost-found-portal/server/*.DotSettings.user
+
+# User-specific & secret files
+lost-found-portal/server/*.user
+lost-found-portal/server/*.suo
+lost-found-portal/server/*.userosscache
+lost-found-portal/server/.env
+lost-found-portal/server/secrets.json
+lost-found-portal/server/Properties/launchSettings.json
+
+# Publish / package artifacts
+lost-found-portal/server/publish/
+lost-found-portal/server/**/publish/
+lost-found-portal/server/packages/
+lost-found-portal/server/*.nupkg
+
+# Databases, caches, test results, coverage
+lost-found-portal/server/*.db
+lost-found-portal/server/*.sqlite
+lost-found-portal/server/*.cache
+lost-found-portal/server/TestResults/
+lost-found-portal/server/test-results/
+lost-found-portal/server/*.coverage
+
+# Misc
+lost-found-portal/server/_ReSharper*/
+lost-found-portal/server/.DS_Store

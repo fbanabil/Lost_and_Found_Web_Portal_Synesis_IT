@@ -109,6 +109,61 @@
           }
         }
       }
+    },
+    "/LostAndFound/AddLostItem": {
+      "post": {
+        "tags": [
+          "LostAndFound"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LostItemToAddDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LostItemToAddDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LostItemToAddDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/LostAndFound/GetLostItems": {
+      "get": {
+        "tags": [
+          "LostAndFound"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/LostAndFound/GetMyLostItemsPost": {
+      "get": {
+        "tags": [
+          "LostAndFound"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -129,6 +184,62 @@
             "minLength": 1,
             "type": "string",
             "format": "password"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LostItemToAddDTO": {
+        "required": [
+          "brand",
+          "color",
+          "date",
+          "latitude",
+          "longitude",
+          "place",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string"
+          },
+          "brand": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "color": {
+            "maxLength": 40,
+            "minLength": 1,
+            "type": "string"
+          },
+          "marks": {
+            "maxLength": 500,
+            "type": "string",
+            "nullable": true
+          },
+          "place": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "photoBase64": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -154,7 +265,7 @@
           },
           "phoneNumber": {
             "minLength": 1,
-            "pattern": "^[0-9]*$",
+            "pattern": "^[+0-9]*$",
             "type": "string"
           },
           "password": {

@@ -8,14 +8,17 @@ export default function Auth(){
   const { register, login } = useAuth()
   const { play } = useSettings()
   const [mode, setMode] = useState('login')
-  const [form, setForm] = useState({ name:'', email:'', password:'' })
+  const [form, setForm] = useState({ name:'', email:'', password:'', confirmPassword: '', phone: '' })
   const [error, setError] = useState('')
 
   const submit = async (e) => {
     e.preventDefault()
     setError('')
     try{
-      if(mode==='register') await register(form)
+      if(mode==='register'){
+        if(form.password !== form.confirmPassword) throw new Error('Passwords do not match')
+        await register(form)
+      }
       else await login(form)
       play('success')
       nav('/lost', { replace:true })
@@ -42,6 +45,14 @@ export default function Auth(){
           </div>
         )}
 
+        {mode==='register' && (
+          <div>
+            <label>Phone number</label>
+            <input className="input" placeholder="+8801..." value={form.phone}
+                   onChange={e=>setForm({...form, phone:e.target.value})} />
+          </div>
+        )}
+
         <div>
           <label>Email</label>
           <input className="input" type="email" placeholder="you@example.com" value={form.email}
@@ -53,6 +64,14 @@ export default function Auth(){
           <input className="input" type="password" placeholder="••••••••" value={form.password}
                  onChange={e=>setForm({...form, password:e.target.value})} required minLength={6} />
         </div>
+
+        {mode==='register' && (
+          <div>
+            <label>Confirm password</label>
+            <input className="input" type="password" placeholder="••••••••" value={form.confirmPassword}
+                   onChange={e=>setForm({...form, confirmPassword:e.target.value})} required minLength={6} />
+          </div>
+        )}
 
         {error && <p style={{ color: '#f87171', margin: 0 }}>{error}</p>}
         <div className="row" style={{ justifyContent:'flex-end' }}>

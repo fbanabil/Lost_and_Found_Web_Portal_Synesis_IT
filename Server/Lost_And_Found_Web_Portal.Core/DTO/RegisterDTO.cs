@@ -19,7 +19,7 @@ namespace Lost_And_Found_Web_Portal.Core.DTO
         public string? PersonName { get; set; }
 
         [Required(ErrorMessage = "Phone number can't be empty")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Phone number must contain 0-9")]
+        [RegularExpression("^[+0-9]*$", ErrorMessage = "Phone number must contain 0-9")]
         public string? PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Password can't be empty")]

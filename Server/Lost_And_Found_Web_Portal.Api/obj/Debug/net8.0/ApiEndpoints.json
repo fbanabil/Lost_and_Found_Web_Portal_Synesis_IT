@@ -42,6 +42,42 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Lost_And_Found_Web_Portal.Api.Controllers.LostAndFoundController",
+    "Method": "AddLostItem",
+    "RelativePath": "LostAndFound/AddLostItem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lostItemToAddDTO",
+        "Type": "Lost_And_Found_Web_Portal.Core.DTO.LostItemToAddDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_And_Found_Web_Portal.Api.Controllers.LostAndFoundController",
+    "Method": "GetLostItems",
+    "RelativePath": "LostAndFound/GetLostItems",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Lost_And_Found_Web_Portal.Api.Controllers.LostAndFoundController",
+    "Method": "GetMyLostItemsPost",
+    "RelativePath": "LostAndFound/GetMyLostItemsPost",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Lost_And_Found_Web_Portal.Api.Controllers.AuthenticationController",
     "Method": "RegisterAdmin",
     "RelativePath": "SecuredApiCode/RegisterAdmin",
