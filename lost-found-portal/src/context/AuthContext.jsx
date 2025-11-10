@@ -33,7 +33,7 @@ const register = async ({ name, email, password, confirmPassword, phone }) => {
 	if(!resp.ok){
 		let parsed = null
 		try{ parsed = await resp.json() }catch(e){ /* not JSON */ }
-		try{ const cloneText = await resp.clone().text(); console.error('Register failed', resp.status, cloneText) }catch(_){ console.error('Register failed', resp.status) }
+		try{ const cloneText = await resp.clone().text() }catch(_){}
 
 		if(parsed){
 			if(Array.isArray(parsed)){
@@ -60,6 +60,7 @@ const register = async ({ name, email, password, confirmPassword, phone }) => {
 	if(!token) throw new Error(data?.message || 'Invalid response from registration server')
 
 	const auth = {
+		id: data.userId || data.id || email, 
 		name: data.personName || name,
 		email,
 		accessToken: token,
@@ -94,6 +95,7 @@ const login = async ({ email, password }) => {
 		if(!token) throw new Error(data?.message || 'Invalid response from authentication server')
 
 		const auth = {
+			id: data.userId || data.id || email, 
 			name: data.personName || null,
 			email,
 			accessToken: token,

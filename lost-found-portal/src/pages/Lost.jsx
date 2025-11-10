@@ -56,7 +56,6 @@ export default function Lost(){
         setItems(normalized)
         store.set(KEY_LOST, normalized)
       }catch(err){
-        console.error('Failed to fetch lost items, falling back to cache:', err)
         const cached = store.get(KEY_LOST, [])
         if(mounted){ setItems(cached); setError(err) }
       }finally{ if(mounted) setLoading(false) }
@@ -95,7 +94,6 @@ export default function Lost(){
         setItems(normalized)
         store.set(KEY_LOST, normalized)
       }catch(err){
-        console.error('Failed to fetch my lost items, falling back to cached filter:', err)
         const cached = store.get(KEY_LOST, [])
         const mineCached = cached.filter(i => i.ownerId && user?.email && i.ownerId === user.email)
         if(mounted){ setItems(mineCached); setError(err) }
@@ -156,13 +154,10 @@ export default function Lost(){
         ownerId: serverItem.ownerId || serverItem.OwnerId || item.ownerId,
         ownerName: serverItem.ownerName || serverItem.OwnerName || item.ownerName,
       }
-    }catch(err){
-      console.error('Failed to save lost item to server:', err)
-      try{ window.alert(err?.message || String(err)) }catch(e){ /* ignore */ }
-      return
-    }
-
-    const next = [saved, ...items]
+      }catch(err){
+        try{ window.alert(err?.message || String(err)) }catch(e){ /* ignore */ }
+        return
+      }    const next = [saved, ...items]
     setItems(next)
     store.set(KEY_LOST, next)
 

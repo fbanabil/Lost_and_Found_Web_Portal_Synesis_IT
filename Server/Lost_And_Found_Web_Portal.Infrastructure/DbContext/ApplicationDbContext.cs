@@ -19,6 +19,8 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.DbContext
 
         public virtual DbSet<LostItem> LostItems { get; set; }
         public virtual DbSet<FoundItem> FoundItems { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
+        public virtual DbSet<ChatThread> ChatThreads { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +28,8 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.DbContext
 
             modelBuilder.Entity<LostItem>().ToTable("LostItems");
             modelBuilder.Entity<FoundItem>().ToTable("FoundItems");
+            modelBuilder.Entity<Chat>().ToTable("Chats");
+            modelBuilder.Entity<ChatThread>().ToTable("ChatThreads");
         }
     }
 }

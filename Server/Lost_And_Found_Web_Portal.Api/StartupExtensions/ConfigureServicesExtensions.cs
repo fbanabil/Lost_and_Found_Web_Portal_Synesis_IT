@@ -33,6 +33,8 @@ namespace Lost_And_Found_Web_Portal.Api.StartupExtensions
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<ILostAndFoundService, LostAndFoundService>();
             builder.Services.AddScoped<ILostAndFoundRepository,LostAndFoundRepository>();
+            builder.Services.AddScoped<IChatBoxServices, ChatBoxServices>();
+            builder.Services.AddScoped<IChatBoxRepository, ChatBoxRepository>();
 
             builder.Services.AddSingleton<ITokenBlacklistRepository, TokenBlacklistRepository>();
 
@@ -70,7 +72,7 @@ namespace Lost_And_Found_Web_Portal.Api.StartupExtensions
             {
                 options.AddPolicy("DevCors", (corsBuilder) =>
                 {
-                    corsBuilder.WithOrigins("http://localhost:3000", "http://localhost:4200", "http://localhost:5173", "https://localhost:5173", "https://localhost:7238", "http://localhost:7238")
+                    corsBuilder.WithOrigins("http://localhost:3000", "http://localhost:4200", "http://localhost:5173", "https://localhost:5173", "https://localhost:5175", "http://localhost:5175")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();

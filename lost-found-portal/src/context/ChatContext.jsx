@@ -1,178 +1,378 @@
 // src/context/ChatContext.jsx
 import React, {
-  createContext, useContext, useMemo, useState, useEffect, useCallback
+  createContext, useContext, useMemo, useState, useCallback
 } from 'react'
-import { store } from '../utils/storage'
 import { useAuth } from './AuthContext'
 
-const KEY = 'lf_threads_v1'
 const ChatContext = createContext(null)
 
-function canonicalParticipants(a, b){
-  const [x, y] = [String(a||'').toLowerCase(), String(b||'').toLowerCase()]
-  return x < y ? [x, y] : [y, x]
-}
-
 export function ChatProvider({ children }){
-  const [threads, setThreads] = useState(()=> store.get(KEY, []))
+  const [backendThreads, setBackendThreads] = useState([])
   const { user } = useAuth()
 
-  useEffect(()=>{ store.set(KEY, threads) }, [threads])
+ const matchesCurrentUser = useCallback((participantId) => {
+    if (!participantId || !user) return false
+    const p = String(participantId).toLowerCase()
+    const uid = String(user.id || '').toLowerCase()
+    const uemail = String(user.email || '').toLowerCase()
+    return p === uid || p === uemail
+  }, [user])
 
-  const save = useCallback((next) => setThreads(next), [])
+ const matchesCurrentUserByName = useCallback((participantName) => {
+    if (!participantName || !user) return false
+    const p = String(participantName).toLowerCase()
+    const uname = String(user.name || '').toLowerCase()
+    const uemail = String(user.email || '').toLowerCase()
+    return p === uname || p === uemail
+  }, [user])
+
+ const fetchSortedThreads = useCallback(async () => {
+    if (!user?.accessToken) {
+      return []
+    }
+    
+    try {
+      const response = await fetch('https://localhost:7238/ChatBox/GetSortedThreads', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.accessToken}`
+        }
+      })
+
+      if (!response.ok) {
+        if (response.status === 400) {
+          return []
+        }
+        throw new Error(`Failed to fetch threads: ${response.status}`)
+      }
+
+      const data = await response.json()
+      setBackendThreads(data)
+      return data
+    } catch (error) {
+      return []
+    }
+  }, [user?.accessToken])
+
+ const fetchMessagesByThreadId = useCallback(async (threadId) => {
+    if (!user?.accessToken) return []
+    
+    try {
+      const response = await fetch(`https://localhost:7238/ChatBox/GetMessagesByThreadId/${threadId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.accessToken}`
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch messages: ${response.status}`)
+      }
+
+      const data = await response.json()
+      
+      return data.map(msg => ({
+        id: msg.id,
+        threadId: msg.threadId,
+        senderId: msg.senderId, 
+        receiverId: msg.receiverId, 
+        message: msg.message || '', 
+        text: msg.message || '', 
+        ts: msg.timestamp ? new Date(msg.timestamp).getTime() : Date.now(),
+        attachment: msg.base64string ? {
+
+          dataUrl: msg.base64string.startsWith('data:') ? msg.base64string : `data:image/jpeg;base64,${msg.base64string}`,
+          base64: msg.base64string.startsWith('data:') ? msg.base64string.split(',')[1] : msg.base64string,
+          type: 'image/*',
+          name: 'attachment'
+        } : null
+      }))
+    } catch (error) {
+      return []
+    }
+  }, [user?.accessToken])
+
+  const loadThreadMessages = useCallback(async (threadId) => {
+    if (!threadId) return []
+
+    const messages = await fetchMessagesByThreadId(threadId)
+
+    const backendThread = backendThreads.find(t => t.chatThreadId === threadId)
+  const currentUserId = user?.id || user?.email 
+    
+    const messagesWithSenders = messages.map(msg => {
+      if (!backendThread) {
+        return {
+          id: msg.id,
+          threadId: msg.threadId,
+          sender: 'unknown',
+          senderName: 'Unknown User',
+          text: msg.message || msg.text || '',
+          ts: msg.timestamp ? new Date(msg.timestamp).getTime() : Date.now(),
+          attachment: msg.attachment
+        }
+      }
+
+      let senderName = 'Unknown User'
+      let isCurrentUser = false
+      let senderForUI = 'other'
+      
+      if (msg.senderId === backendThread.senderId) {
+        senderName = backendThread.senderName
+        isCurrentUser = matchesCurrentUser(backendThread.senderId) || matchesCurrentUserByName(backendThread.senderName)
+      } else if (msg.senderId === backendThread.receiverId) {
+        senderName = backendThread.receiverName  
+        isCurrentUser = matchesCurrentUser(backendThread.receiverId) || matchesCurrentUserByName(backendThread.receiverName)
+      }
+
+      try {
+        console.log('[ChatContext] mapMessage:', {
+          threadId: threadId,
+          msgId: msg.id,
+          msgSenderId: msg.senderId,
+          threadSenderId: backendThread.senderId,
+          threadReceiverId: backendThread.receiverId,
+          threadSenderName: backendThread.senderName,
+          threadReceiverName: backendThread.receiverName,
+          resolvedSenderName: senderName,
+          isCurrentUser
+        })
+      } catch (_){ }
+
+      if (isCurrentUser) {
+        senderName = 'You'
+        senderForUI = user?.email?.toLowerCase() || currentUserId 
+      } else {
+        senderForUI = 'other' 
+      }
+
+      const processedMessage = {
+        id: msg.id,
+        threadId: msg.threadId,
+        sender: senderForUI,
+        senderName: senderName,
+        text: msg.message || msg.text || '',
+        ts: msg.timestamp ? new Date(msg.timestamp).getTime() : Date.now(),
+        attachment: msg.attachment
+      }
+      
+      return processedMessage
+    })
+    return messagesWithSenders
+  }, [fetchMessagesByThreadId, backendThreads, user?.id, user?.email])
 
   const getThreadsFor = useCallback((email) => {
-    const me = String(email||'').toLowerCase()
-    return [...threads]
-      .filter(t => t.participants.includes(me))
-      .sort((a,b) => (b.updatedAt||0) - (a.updatedAt||0))
-  }, [threads])
+    const currentUserId = user?.id || user?.email 
+
+    return backendThreads.map(backendThread => {
+      let isUserSender = matchesCurrentUser(backendThread.senderId)
+      if (!isUserSender && !matchesCurrentUser(backendThread.receiverId)) {
+        isUserSender = matchesCurrentUserByName(backendThread.senderName)
+      }
+      const otherParticipantId = isUserSender ? backendThread.receiverId : backendThread.senderId
+      const otherParticipantName = isUserSender ? backendThread.receiverName : backendThread.senderName
+      try {
+        console.log('[ChatContext] getThreadsFor thread:', backendThread.chatThreadId, {
+          senderId: backendThread.senderId,
+          senderName: backendThread.senderName,
+          receiverId: backendThread.receiverId,
+          receiverName: backendThread.receiverName,
+          isUserSender,
+          otherParticipantId,
+          otherParticipantName,
+          currentUser: { id: user?.id, email: user?.email, name: user?.name }
+        })
+      } catch (_){ }
+      
+      return {
+        id: backendThread.chatThreadId,
+        participants: [currentUserId, otherParticipantId],
+        item: {
+          id: backendThread.chatThreadId,
+          type: 'chat',
+          title: 'Chat Thread',
+          ownerName: otherParticipantName || 'User',
+        },
+        customTitle: `Chat with ${otherParticipantName || 'User'}`,
+        messages: [], // Messages will be loaded separately when thread is clicked
+        lastRead: {},
+        updatedAt: new Date(backendThread.lastUpdatedAt).getTime(),
+        otherName: otherParticipantName,
+        senderId: backendThread.senderId,
+        senderName: backendThread.senderName,
+        receiverId: backendThread.receiverId,
+        receiverName: backendThread.receiverName
+      }
+    }).sort((a,b) => (b.updatedAt||0) - (a.updatedAt||0))
+  }, [backendThreads, user?.id])
 
   const getThreadById = useCallback((id) => {
-    return threads.find(t => t.id === id)
-  }, [threads])
-
-  const unreadTotal = useCallback((email) => {
-    const me = String(email||'').toLowerCase()
-    return getThreadsFor(me).reduce((sum, t) => {
-      const lastRead = t.lastRead?.[me] || 0
-      const inc = t.messages.filter(m => m.sender !== me && m.ts > lastRead).length
-      return sum + inc
-    }, 0)
-  }, [getThreadsFor])
-
-  const getOrCreateThread = useCallback(({ otherEmail, otherName, item }) => {
-    const me = String(user?.email||'').toLowerCase()
-    const other = String(otherEmail||'').toLowerCase()
-    const [a,b] = canonicalParticipants(me, other)
-    const existing = threads.find(t =>
-      t.participants[0]===a && t.participants[1]===b && t.item?.id === item.id
-    )
-    if (existing) return existing
-
-    const thread = {
-      id: crypto.randomUUID(),
-      participants: [a, b],
-      item: {
-        id: item.id,
-        type: item.type || (item.private ? 'found' : 'lost'),
-        title: item.title || item.type || 'Item',
-        ownerName: item.ownerName || 'User',
-      },
-      customTitle: '',     // user-editable name
-      messages: [],
-      lastRead: { [me]: Date.now() },
-      updatedAt: Date.now(),
-      otherName: otherName || otherEmail
-    }
-    const next = [thread, ...threads]
-    save(next)
-    return thread
-  }, [threads, user, save])
-
-  const sendMessage = useCallback((threadId, text) => {
-    const me = String(user?.email||'').toLowerCase()
-    if (!me) return
-    setThreads(prev => prev.map(t => {
-      if (t.id !== threadId) return t
-      const msg = { id: crypto.randomUUID(), sender: me, text: text.trim(), ts: Date.now() }
+    // Find backend thread by ID
+    const backendThread = backendThreads.find(t => t.chatThreadId === id || t.chatThreadId == id)
+    if (backendThread) {
+  const currentUserId = user?.id || user?.email // Use ID or email as fallback
+      
+  // Determine the other participant (not the current user)
+  // Try ID/email match first, then fallback to name match
+  let isUserSender = matchesCurrentUser(backendThread.senderId)
+  if (!isUserSender && !matchesCurrentUser(backendThread.receiverId)) {
+    // If neither ID matches, try name matching - assume user is sender if name matches
+    isUserSender = matchesCurrentUserByName(backendThread.senderName)
+  }
+  const otherParticipantId = isUserSender ? backendThread.receiverId : backendThread.senderId
+  const otherParticipantName = isUserSender ? backendThread.receiverName : backendThread.senderName
+  // Debug logging: when resolving a single thread by id
+  try {
+    // eslint-disable-next-line no-console
+    console.log('[ChatContext] getThreadById:', id, {
+      senderId: backendThread.senderId,
+      senderName: backendThread.senderName,
+      receiverId: backendThread.receiverId,
+      receiverName: backendThread.receiverName,
+      isUserSender,
+      otherParticipantId,
+      otherParticipantName,
+      currentUser: { id: user?.id, email: user?.email, name: user?.name }
+    })
+  } catch (_){ }
+      
       return {
-        ...t,
-        messages: [...t.messages, msg],
-        lastRead: { ...t.lastRead, [me]: Date.now() },
-        updatedAt: Date.now()
+        id: backendThread.chatThreadId,
+        participants: [currentUserId, otherParticipantId],
+        item: {
+          id: backendThread.chatThreadId,
+          type: 'chat',
+          title: 'Chat Thread',
+          ownerName: otherParticipantName || 'User',
+        },
+        customTitle: `Chat with ${otherParticipantName || 'User'}`,
+        messages: [], // Messages will be loaded separately when needed
+        lastRead: {},
+        updatedAt: new Date(backendThread.lastUpdatedAt).getTime(),
+        otherName: otherParticipantName,
+        senderId: backendThread.senderId,
+        senderName: backendThread.senderName,
+        receiverId: backendThread.receiverId,
+        receiverName: backendThread.receiverName
       }
-    }))
-  }, [user])
+    }
+    
+    return null
+  }, [backendThreads, user?.id])
+
+  const unreadTotal = useCallback(() => {
+
+    return 0
+  }, [])
+
+  const sendMessage = useCallback(async (threadId, text, attachment = null) => {
+    const currentUserId = user?.id || user?.email 
+    if (!currentUserId || !user?.accessToken) {
+      return
+    }
+
+    const trimmed = (text||'').trim()
+    if (!trimmed && !attachment) {
+      return
+    }
+
+    try {
+
+      const thread = backendThreads.find(t => t.chatThreadId === threadId || t.chatThreadId == threadId)
+      
+      if (!thread) {
+        throw new Error(`Thread not found with ID: ${threadId}`)
+      }
+
+     let receiverId
+      if (currentUserId === thread.senderId) {
+        receiverId = thread.receiverId
+      } else if (currentUserId === thread.receiverId) {
+        receiverId = thread.senderId
+      } else {
+        receiverId = thread.receiverId
+      }
+      
+      let base64StringValue = null
+      if (attachment?.base64) {
+        if (attachment.base64.startsWith('data:')) {
+          base64StringValue = attachment.base64
+        } else {
+          const mimeType = attachment.type || 'image/png'
+          base64StringValue = `data:${mimeType};base64,${attachment.base64}`
+        }
+      }
+      
+      const finalPayload = {
+        threadId: String(threadId),
+        receiverId: String(receiverId),
+        message: String(trimmed || ''),
+        base64String: base64StringValue
+      }
+
+      const response = await fetch('https://localhost:7238/ChatBox/SendMessage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.accessToken}`
+        },
+        body: JSON.stringify(finalPayload)
+      })
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        throw new Error(`Failed to send message: ${response.status} - ${errorText}`)
+      }
+
+      const responseClone = response.clone()
+      const responseText = await responseClone.text()
+      
+      let data = null
+      if (responseText.trim() === '') {
+        data = null
+      } else {
+        try {
+          data = await response.json()
+        } catch (jsonError) {
+          data = null
+        }
+      }
+      
+      return data || {}
+    } catch (error) {
+      throw error
+    }
+  }, [user, backendThreads])
 
   const markRead = useCallback((threadId) => {
-    const me = String(user?.email||'').toLowerCase()
-    setThreads(prev => prev.map(t => {
-      if (t.id !== threadId) return t
-      const already = t.lastRead?.[me] || 0
-      const now = Date.now()
-      if (now <= already) return t
-      return { ...t, lastRead: { ...t.lastRead, [me]: now } }
-    }))
-  }, [user])
+  }, [])
 
   const renameThread = useCallback((threadId, title) => {
-    const trimmed = (title || '').trim()
-    setThreads(prev => prev.map(t => (
-      t.id === threadId ? { ...t, customTitle: trimmed } : t
-    )))
   }, [])
 
-  // --- NEW: system message helper
   const sendSystem = useCallback((threadId, text) => {
-    setThreads(prev => prev.map(t => {
-      if (t.id !== threadId) return t
-      const msg = { id: crypto.randomUUID(), sender: '_system', text: text.trim(), ts: Date.now() }
-      return { ...t, messages: [...t.messages, msg], updatedAt: Date.now() }
-    }))
   }, [])
 
-  // --- NEW: notify both parties of a potential match & return the thread
   const notifyPotentialMatch = useCallback(({ lost, found, distanceM }) => {
-    const a = String(lost?.ownerId||'').toLowerCase()
-    const b = String(found?.ownerId||'').toLowerCase()
-    if (!a || !b) return null
-
-    // Reuse a thread keyed by LOST item id + participants, or create one
-    const existing = threads.find(t =>
-      t.item?.id === lost.id &&
-      t.participants.includes(a) &&
-      t.participants.includes(b)
-    )
-
-    const baseItem = {
-      id: lost.id,
-      type: 'lost',
-      title: lost.type || 'Item',
-      ownerName: lost.ownerName || 'User',
-    }
-
-    let thread
-    if (existing) {
-      thread = existing
-    } else {
-      const [p1, p2] = canonicalParticipants(a, b)
-      thread = {
-        id: crypto.randomUUID(),
-        participants: [p1, p2],
-        item: baseItem,
-        customTitle: baseItem.title,
-        messages: [],
-        lastRead: {},
-        updatedAt: Date.now(),
-        otherName: found.ownerName || found.ownerId
-      }
-      setThreads(prev => [thread, ...prev])
-    }
-
-    const note = `Potential match nearby (~${distanceM} m): “${lost.type || 'item'}”. You can chat to verify ownership details.`
-    setThreads(prev => prev.map(t => {
-      if (t.id !== thread.id) return t
-      const msg = { id: crypto.randomUUID(), sender: '_system', text: note, ts: Date.now() }
-      return { ...t, messages: [...t.messages, msg], updatedAt: Date.now() }
-    }))
-
-    return thread
-  }, [threads])
+    return null
+  }, [])
 
   const value = useMemo(()=>({
-    threads,
+    backendThreads,
     getThreadsFor,
     getThreadById,
-    getOrCreateThread,
     sendMessage,
     markRead,
     unreadTotal,
     renameThread,
-    // new
+    fetchSortedThreads,
+    fetchMessagesByThreadId,
+    loadThreadMessages,
     sendSystem,
     notifyPotentialMatch,
-  }), [threads, getThreadsFor, getThreadById, getOrCreateThread, sendMessage, markRead, unreadTotal, renameThread, sendSystem, notifyPotentialMatch])
+  }), [backendThreads, getThreadsFor, getThreadById, sendMessage, markRead, unreadTotal, renameThread, fetchSortedThreads, fetchMessagesByThreadId, loadThreadMessages, sendSystem, notifyPotentialMatch])
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>
 }

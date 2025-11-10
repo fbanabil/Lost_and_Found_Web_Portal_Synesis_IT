@@ -30,7 +30,6 @@ export default function ComposerFound({ onCreate }) {
       setPublicForm({ type:'', place:'', date:'', location:null })
       setPrivateForm({ brand:'', color:'', detail:'' })
     }catch(err){
-      console.error('Failed to post found item:', err)
       try{ window.alert(err?.message || String(err)) }catch(e){}
     }
   }

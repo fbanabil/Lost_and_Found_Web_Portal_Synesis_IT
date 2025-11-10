@@ -78,3 +78,7 @@ Server\Lost_And_Found_Web_Portal.Api\.vs
 Server\Lost_And_Found_Web_Portal.Api\obj
 Server\Lost_And_Found_Web_Portal.Core\obj
 Server\Lost_And_Found_Web_Portal.Infrastructure\obj
+
+Server\Lost_And_Found_Web_Portal.Infrastructure\bin
+Server\Lost_And_Found_Web_Portal.Core\bin
+Server\Lost_And_Found_Web_Portal.Api\bin

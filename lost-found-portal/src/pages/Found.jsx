@@ -71,7 +71,6 @@ export default function Found(){
         ownerName: serverItem.ownerName || serverItem.OwnerName || item.ownerName
       }
     }catch(err){
-      console.error('Failed to save found item to server:', err)
       try{ window.alert(err?.message || String(err)) }catch(e){}
       return
     }
@@ -126,7 +125,6 @@ export default function Found(){
         setItems(normalized)
         store.set(KEY_FOUND, normalized)
       }catch(err){
-        console.error('Failed to fetch found items, falling back to cache:', err)
         const cached = store.get(KEY_FOUND, [])
         if(mounted){ setItems(cached); setError(err) }
       }finally{ if(mounted) setLoading(false) }
@@ -165,7 +163,6 @@ export default function Found(){
         setItems(normalized)
         store.set(KEY_FOUND, normalized)
       }catch(err){
-        console.error('Failed to fetch my found items, falling back to cached filter:', err)
         const cached = store.get(KEY_FOUND, [])
         const mineCached = cached.filter(i => i.ownerId && user?.email && i.ownerId === user.email)
         if(mounted){ setItems(mineCached); setError(err) }
