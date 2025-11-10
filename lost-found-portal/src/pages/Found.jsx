@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { store } from '../utils/storage'
 import ItemCard from '../components/ItemCard'
 import ComposerFound from '../components/ComposerFound'
+import Modal from '../components/Modal'
+import MapPicker from '../components/MapPicker'
 import { useAuth } from '../context/AuthContext'
 import { useChat } from '../context/ChatContext'
 import { findMatches } from '../utils/matcher'
@@ -20,6 +22,15 @@ export default function Found(){
   const nav = useNavigate()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  
+  const [showFilterModal, setShowFilterModal] = useState(false)
+  const [filterData, setFilterData] = useState({
+    itemType: '',
+    dateOfLoss: '',
+    location: null
+  })
+  const [isFilterActive, setIsFilterActive] = useState(false)
+  const [filteredItems, setFilteredItems] = useState([])
 
   const addItem = async (item) => {
     const payload = {
@@ -174,9 +185,81 @@ export default function Found(){
   }, [mine, user])
 
   const visible = useMemo(() => {
+    if (isFilterActive) {
+      return mine ? filteredItems.filter(i => i.ownerId && user?.email && i.ownerId === user.email) : filteredItems
+    }
     if (mine) return items
     return items
-  }, [items, mine])
+  }, [items, mine, isFilterActive, filteredItems, user])
+
+  const handleFilterSubmit = async () => {
+    if (!filterData.itemType || !filterData.dateOfLoss || !filterData.location?.lat || !filterData.location?.lng) {
+      alert('Please fill in all required fields: Item Type, Date of Loss, and Location')
+      return
+    }
+
+    setLoading(true)
+    try {
+      const token = user?.accessToken
+      const headers = { 'Content-Type': 'application/json' }
+      if (token) headers['Authorization'] = `Bearer ${token}`
+
+      const filterParams = new URLSearchParams({
+        ItemType: filterData.itemType,
+        DateOfLoss: filterData.dateOfLoss,
+        Latitude: filterData.location.lat.toString(),
+        Longitude: filterData.location.lng.toString()
+      })
+
+      const resp = await fetch(`https://localhost:7238/LostAndFound/GetFoundItemsByFiltering?${filterParams}`, {
+        method: 'GET',
+        headers
+      })
+
+      if (!resp.ok) {
+        throw new Error(`Server returned ${resp.status}`)
+      }
+
+      const list = await resp.json()
+      const normalized = (Array.isArray(list) ? list : []).map(si => ({
+        id: si.id || si.Id || crypto.randomUUID(),
+        type: si.type || si.Type || '',
+        brand: si.brand || si.Brand || '',
+        color: si.color || si.Color || '',
+        marks: si.marks || si.Marks || si.detail || si.Detail || '',
+        place: si.place || si.Place || '',
+        date: si.foundDate || si.FoundDate || si.date || si.Date || null,
+        location: {
+          lat: si.latitude ?? si.Latitude ?? (si.location?.lat) ?? null,
+          lng: si.longitude ?? si.Longitude ?? (si.location?.lng) ?? null
+        },
+        photo: si.photoUrl || si.PhotoUrl || si.photo || si.PhotoBase64 || si.photoBase64 || null,
+        status: si.status || si.Status || 'Pending',
+        ownerId: si.ownerId || si.OwnerId || si.owner || null,
+        ownerName: si.ownerName || si.OwnerName || si.personName || null
+      }))
+
+      setFilteredItems(normalized)
+      setIsFilterActive(true)
+      setShowFilterModal(false)
+    } catch (err) {
+      alert(err?.message || 'Failed to apply filter')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleClearFilter = () => {
+    setFilterData({
+      itemType: '',
+      dateOfLoss: '',
+      location: null
+    })
+    setFilteredItems([])
+    setIsFilterActive(false)
+  }
+
+
 
   return (
     <motion.div
@@ -189,9 +272,37 @@ export default function Found(){
       <ComposerFound onCreate={addItem} />
 
       <div className="panel" style={{padding:12, display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-        <div className="filters">
+        <div className="filters" style={{display:'flex', gap:'8px', alignItems:'center'}}>
           <button className={`chip ${!mine ? 'active':''}`} onClick={()=>setMine(false)}>All posts</button>
           <button className={`chip ${mine ? 'active':''}`} onClick={()=>setMine(true)}>My posts</button>
+          <div style={{display:'flex', alignItems:'center', gap:'4px'}}>
+            <button 
+              className={`chip ${isFilterActive ? 'active' : ''}`} 
+              onClick={()=>setShowFilterModal(true)} 
+              style={{
+                backgroundColor: isFilterActive ? 'var(--accent)' : 'var(--primary)', 
+                color:'white'
+              }}
+            >
+              🔍 Filter
+            </button>
+            {isFilterActive && (
+              <button 
+                className="chip" 
+                onClick={handleClearFilter}
+                style={{
+                  backgroundColor:'var(--danger)', 
+                  color:'white', 
+                  padding:'4px 8px',
+                  fontSize:'12px',
+                  minWidth:'auto'
+                }}
+                title="Clear Filter"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         </div>
         <div style={{color:'var(--muted)'}}>{visible.length} item(s)</div>
       </div>
@@ -199,6 +310,72 @@ export default function Found(){
       {visible.length === 0 ? (
         <div className="panel center" style={{padding:24}}>No found items yet.</div>
       ) : visible.map(i => <ItemCard key={i.id} item={i} type="found" />)}
+
+      {/* Filter Modal */}
+      <Modal 
+        open={showFilterModal} 
+        onClose={() => setShowFilterModal(false)}
+        title="Filter Found Items"
+        footer={
+          <div style={{display:'flex', gap:'12px', justifyContent:'flex-end'}}>
+            <button 
+              className="btn" 
+              onClick={() => setShowFilterModal(false)}
+              style={{backgroundColor:'var(--muted)', color:'white'}}
+            >
+              Cancel
+            </button>
+            <button 
+              className="btn primary" 
+              onClick={handleFilterSubmit}
+            >
+              Filter
+            </button>
+          </div>
+        }
+      >
+        <div style={{display:'flex', flexDirection:'column', gap:'16px'}}>
+          {/* Item Type Field */}
+          <div>
+            <label style={{display:'block', marginBottom:'8px', fontWeight:'500'}}>
+              Item Type <span style={{color:'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="text"
+              className="input" 
+              placeholder="Enter item type (e.g., Phone, Wallet, Keys)"
+              value={filterData.itemType} 
+              onChange={(e) => setFilterData({...filterData, itemType: e.target.value})}
+              required
+            />
+          </div>
+
+          {/* Date of Loss Field */}
+          <div>
+            <label style={{display:'block', marginBottom:'8px', fontWeight:'500'}}>
+              Date of Loss <span style={{color:'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="date" 
+              className="input" 
+              value={filterData.dateOfLoss} 
+              onChange={(e) => setFilterData({...filterData, dateOfLoss: e.target.value})}
+              required
+            />
+          </div>
+
+          {/* Location (Map Picker) Field */}
+          <div>
+            <label style={{display:'block', marginBottom:'8px', fontWeight:'500'}}>
+              Location (Latitude & Longitude) <span style={{color:'var(--danger)'}}>*</span>
+            </label>
+            <MapPicker 
+              value={filterData.location} 
+              onChange={(location) => setFilterData({...filterData, location})}
+            />
+          </div>
+        </div>
+      </Modal>
     </motion.div>
   )
 }

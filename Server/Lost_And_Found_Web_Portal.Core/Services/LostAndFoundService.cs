@@ -19,6 +19,7 @@ namespace Lost_And_Found_Web_Portal.Core.Services
         private readonly ILostAndFoundRepository _lostAndFoundRepository;
         private readonly StringMatchHelper _stringMatchHelper;
         private readonly ImageConverter _imageConverter;
+        private readonly CalculationHelper _calculationHelper;
 
         public LostAndFoundService(ILogger<LostAndFoundService> logger, ILostAndFoundRepository lostAndFoundRepository)
         {
@@ -26,6 +27,7 @@ namespace Lost_And_Found_Web_Portal.Core.Services
             _lostAndFoundRepository = lostAndFoundRepository;
             _stringMatchHelper = new StringMatchHelper();
             _imageConverter = new ImageConverter();
+            _calculationHelper = new CalculationHelper();
         }
 
        
@@ -38,7 +40,7 @@ namespace Lost_And_Found_Web_Portal.Core.Services
 
             lostItem.OwnerName = ownerName;
             lostItem.OwnerId = ownerId;
-            lostItem.PhotoUrl = await _imageConverter.SaveBase64ImageAsync(lostItemToAddDTO.PhotoBase64, lostItem.Id, webRootPath);
+            if(lostItemToAddDTO.PhotoBase64 != null) lostItem.PhotoUrl = await _imageConverter.SaveBase64ImageAsync(lostItemToAddDTO.PhotoBase64, lostItem.Id, webRootPath);
 
 
             await _lostAndFoundRepository.AddLostItem(lostItem);
@@ -55,7 +57,7 @@ namespace Lost_And_Found_Web_Portal.Core.Services
 
             foreach(LostItemToShowDTO dto in lostItemToShowDTOs)
             {
-                dto.PhotoBase64 =await _imageConverter.ConvertImageToBase64Async(dto.PhotoBase64, webRootPath);
+                if(dto.PhotoBase64 != null) dto.PhotoBase64 =await _imageConverter.ConvertImageToBase64Async(dto.PhotoBase64, webRootPath);
             }
             return lostItemToShowDTOs;
         }
@@ -67,7 +69,7 @@ namespace Lost_And_Found_Web_Portal.Core.Services
 
             foreach (LostItemToShowDTO dto in lostItemToShowDTOs)
             {
-                dto.PhotoBase64 = await _imageConverter.ConvertImageToBase64Async(dto.PhotoBase64, webRootPath);
+                if(dto.PhotoBase64 != null) dto.PhotoBase64 = await _imageConverter.ConvertImageToBase64Async(dto.PhotoBase64, webRootPath);
             }
             return lostItemToShowDTOs;
         }
@@ -94,6 +96,69 @@ namespace Lost_And_Found_Web_Portal.Core.Services
             List<FoundItem> foundItems = await _lostAndFoundRepository.GetFoundItemsById(id);
             List<FoundItemToShowDTO> foundItemToShowDTOs = foundItems.Select(fi => fi.ToFoundItemToShowDTO()).ToList();
             return foundItemToShowDTOs;
+        }
+
+        public async Task<List<FoundItemToShowDTO>> GetFilteredFoundItem(FilterAttributesDTO filterAttributesDTO)
+        {
+            List<FoundItem> foundItems = await _lostAndFoundRepository.GetAllFoundItems();
+
+            var filteredItems = foundItems.Where(item =>
+            {
+
+                double distance = _calculationHelper.CalculateDistance(
+                    (double)filterAttributesDTO.Latitude!,
+                    (double)filterAttributesDTO.Longitude!,
+                    (double)item.Latitude!,
+                    (double)item.Longitude!
+                );
+
+                bool withinDistance = distance <= 0.3; 
+
+
+                bool withinDateRange = Math.Abs((item.FoundDate!.Value - filterAttributesDTO.DateOfLoss!.Value).TotalDays) <= 3;
+
+                return withinDistance && withinDateRange;
+            }).ToList();
+
+            var sortedItems = filteredItems
+                .OrderByDescending(item => string.Equals(item.Type, filterAttributesDTO.ItemType, StringComparison.OrdinalIgnoreCase))
+                .ThenBy(item => item.Type)
+                .ToList();
+
+            List<FoundItemToShowDTO> foundItemToShowDTOs = sortedItems.Select(fi => fi.ToFoundItemToShowDTO()).ToList();
+            return foundItemToShowDTOs;
+
+        }
+
+        public async Task<List<LostItemToShowDTO>> GetAllLostItemsWithoutImages()
+        {
+            List<LostItem> lostItems = _lostAndFoundRepository.GetAllLostItems();
+            List<LostItemToShowDTO> lostItemToShowDTOs = lostItems.Select(li => li.ToLostItemToShow()).ToList();
+
+            return lostItemToShowDTOs;
+        }
+
+
+        public async Task AddNotification(NotificationToAddDTO notificationToAddDTO)
+        {
+            List<Notification> notifications = await _lostAndFoundRepository.GetNotification(notificationToAddDTO);
+
+            if(notifications.Count == 0)
+            {
+                await _lostAndFoundRepository.AddNotification(notificationToAddDTO.ToNotification());
+            }
+        }
+
+        public async Task<List<NotificationToShowDTO>> GetNotificationsByUserId(Guid id)
+        {
+            List<Notification> notifications =  await _lostAndFoundRepository.GetNotificationsByUserId(id);
+            List<NotificationToShowDTO> notificationToShowDTOs = notifications.Select(n => n.ToNotificationToShowDTO()).ToList();
+            return notificationToShowDTOs;
+        }
+
+        public async Task InvertNotificationAsRead(Guid notificationId)
+        {
+            await _lostAndFoundRepository.InvertNotificationAsRead(notificationId);
         }
     }
 }

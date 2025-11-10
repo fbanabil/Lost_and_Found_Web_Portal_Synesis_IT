@@ -1,6 +1,8 @@
 ﻿using Lost_And_Found_Web_Portal.Core.Domain.Entities;
 using Lost_And_Found_Web_Portal.Core.Domain.RepositoryContracts;
+using Lost_And_Found_Web_Portal.Core.DTO;
 using Lost_And_Found_Web_Portal.Infrastructure.DbContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +62,34 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Repositories
         {
             return Task.FromResult(_dbContext.FoundItems
                 .Where(x => x.OwnerId == id).ToList());
+        }
+
+        public async Task<List<Notification>> GetNotification(NotificationToAddDTO notificationToAddDTO)
+        {
+            return _dbContext.Notifications
+                .Where(n => n.FoundItemId == notificationToAddDTO.FoundItemId && n.NotificationReceiver == notificationToAddDTO.NotificationReceiver)
+                .ToList();
+        }
+
+        public async Task AddNotification(Notification notification)
+        {
+            await _dbContext.Notifications.AddAsync(notification);
+            _dbContext.SaveChanges();
+        }
+
+        public async Task<List<Notification>> GetNotificationsByUserId(Guid id)
+        {
+            return await _dbContext.Notifications.ToListAsync();
+        }
+
+        public async Task InvertNotificationAsRead(Guid notificationId)
+        {
+            Notification notification = await _dbContext.Notifications.FindAsync(notificationId);
+            if (notification != null)
+            {
+                notification.IsRead = !notification.IsRead;
+                _dbContext.SaveChanges();
+            }
         }
     }
 }

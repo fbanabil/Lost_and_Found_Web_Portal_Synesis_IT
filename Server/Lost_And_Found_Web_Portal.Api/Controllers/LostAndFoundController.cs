@@ -143,6 +143,39 @@ namespace Lost_And_Found_Web_Portal.Api.Controllers
         }
 
 
+
+        [HttpGet]
+        public async Task<IActionResult> GetFoundItemsByFiltering([FromQuery] FilterAttributesDTO filterAttributesDTO)
+        {
+            List<FoundItemToShowDTO> foundItems = await _lostAndFoundService.GetFilteredFoundItem(filterAttributesDTO);
+            return Ok(foundItems);
+        }
+
+
+
+
+        #endregion
+
+
+        #region NotificationModulo
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetMyNotifications()
+        {
+            var email = User.FindFirst("userEmail")?.Value
+                  ?? User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value;
+            ApplicationUser user = await _userManager.FindByEmailAsync(email);
+            List<NotificationToShowDTO> notificationToShow = await _lostAndFoundService.GetNotificationsByUserId(user.Id);
+            return Ok(notificationToShow);
+        }
+
+        [HttpPost]
+        public async Task IsRead([FromBody] Guid NotificationId)
+        {
+            await _lostAndFoundService.InvertNotificationAsRead(NotificationId);
+        }
+
         #endregion
 
     }

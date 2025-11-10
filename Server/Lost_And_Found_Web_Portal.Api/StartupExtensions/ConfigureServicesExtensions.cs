@@ -28,7 +28,7 @@ namespace Lost_And_Found_Web_Portal.Api.StartupExtensions
 
 
             builder.Services.AddScoped<ModelStateHandleFilter>();
-            
+            builder.Services.AddHostedService<AutoMatchingService>();
 
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<ILostAndFoundService, LostAndFoundService>();

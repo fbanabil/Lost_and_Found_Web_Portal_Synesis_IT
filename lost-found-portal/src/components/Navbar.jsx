@@ -1,6 +1,7 @@
 import { NavLink, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import UserMenu from './UserMenu'
+import NotificationMenu from './NotificationMenu'
 import { useAuth } from '../context/AuthContext'
 import { useChat } from '../context/ChatContext'
 
@@ -88,13 +89,18 @@ export default function Navbar(){
         </nav>
 
         {/* Right: auth / profile */}
-        <div className="row" style={{justifyContent:'flex-end'}}>
+        <div className="row" style={{justifyContent:'flex-end', gap:'8px', alignItems:'center'}}>
           {!user && (
             <Link to="/auth" className="btn secondary" style={{height:40}}>
               Login / Register
             </Link>
           )}
-          {user && <UserMenu />}
+          {user && (
+            <>
+              <NotificationMenu />
+              <UserMenu />
+            </>
+          )}
         </div>
       </div>
 
