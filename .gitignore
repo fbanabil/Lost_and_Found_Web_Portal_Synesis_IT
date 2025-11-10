@@ -8,6 +8,13 @@
 !lost-found-portal/
 !lost-found-portal/**
 
+# Allow the Server directory and its contents
+!Server/
+!Server/**
+
+# Ignore wwwroot directory (static files, uploads, etc.)
+Server/**/wwwroot/
+
 # Ignore build artifacts inside that project
 lost-found-portal/node_modules/
 lost-found-portal/dist/
