@@ -79,7 +79,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Repositories
 
         public async Task<List<Notification>> GetNotificationsByUserId(Guid id)
         {
-            return await _dbContext.Notifications.ToListAsync();
+            return await _dbContext.Notifications.Where(x=> x.NotificationReceiver == id).ToListAsync();
         }
 
         public async Task InvertNotificationAsRead(Guid notificationId)

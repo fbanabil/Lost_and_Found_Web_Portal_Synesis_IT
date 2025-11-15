@@ -17,8 +17,8 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
     app.UseCors("ProdCors");
 }
 app.UseStaticFiles();

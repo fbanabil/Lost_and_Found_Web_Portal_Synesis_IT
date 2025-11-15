@@ -246,13 +246,16 @@ export default function Inbox(){
                   gap:8,
                   padding:'10px 12px',
                   borderRadius:12,
-                  background: isActive ? 'color-mix(in hsl, var(--accent), #fff 90%)' : 'var(--panel)',
+                  background: isActive ? 'var(--accent)' : 'var(--panel)',
                   border: isActive
-                    ? '1px solid color-mix(in hsl, var(--accent), #fff 55%)'
+                    ? '2px solid var(--accent)'
                     : '1px solid color-mix(in hsl, var(--panel), #000 12%)',
-                  boxShadow: isActive ? '0 4px 12px rgba(0,0,0,.08)' : '0 2px 6px rgba(0,0,0,.05)',
+                  boxShadow: isActive ? '0 6px 20px rgba(0,0,0,.15)' : '0 2px 6px rgba(0,0,0,.05)',
                   position:'relative',
-                  paddingLeft: isActive ? 14 : 12
+                  paddingLeft: isActive ? 14 : 12,
+                  color: isActive ? '#fff' : 'var(--text)',
+                  transform: isActive ? 'translateY(-1px)' : 'translateY(0)',
+                  transition: 'all 0.2s ease'
                 }}
               >
                 {isActive && (
@@ -280,7 +283,7 @@ export default function Inbox(){
                       {t.customTitle || t.item?.title || 'Item'}
                     </span>
                   </div>
-                  <div style={{ fontSize:12, color:'var(--muted)' }}>
+                  <div style={{ fontSize:12, color: isActive ? 'rgba(255,255,255,0.8)' : 'var(--muted)' }}>
                     {t.receiverName ? `With: ${t.receiverName}` : `With: ${t.participants.filter(p=>p!==me)[0]}`}
                   </div>
                 </div>
@@ -348,17 +351,25 @@ export default function Inbox(){
                           {m.attachment && (
                             <div style={{ marginTop:8 }}>
                               {m.attachment.dataUrl ? (
-                                <img src={m.attachment.dataUrl} alt={m.attachment.name} style={{ maxWidth:'100%', borderRadius:8 }} />
+                                <div className="chat-image-container">
+                                  <img src={m.attachment.dataUrl} alt={m.attachment.name} className="chat-image" />
+                                </div>
                               ) : m.attachment.base64 ? (
-                                <img src={`data:${m.attachment.type};base64,${m.attachment.base64}`} alt={m.attachment.name} style={{ maxWidth:'100%', borderRadius:8 }} />
+                                <div className="chat-image-container">
+                                  <img src={`data:${m.attachment.type};base64,${m.attachment.base64}`} alt={m.attachment.name} className="chat-image" />
+                                </div>
                               ) : m.attachment.url ? (
-                                <img src={m.attachment.url} alt={m.attachment.name || 'attachment'} style={{ maxWidth:'100%', borderRadius:8 }} />
+                                <div className="chat-image-container">
+                                  <img src={m.attachment.url} alt={m.attachment.name || 'attachment'} className="chat-image" />
+                                </div>
                               ) : null}
                             </div>
                           )}
                           {!m.attachment && m.attachmentUrl && (
                             <div style={{ marginTop:8 }}>
-                              <img src={m.attachmentUrl} alt="attachment" style={{ maxWidth:'100%', borderRadius:8 }} />
+                              <div className="chat-image-container">
+                                <img src={m.attachmentUrl} alt="attachment" className="chat-image" />
+                              </div>
                             </div>
                           )}
                   <div style={{ fontSize:11, opacity:0.8, marginTop:4 }}>

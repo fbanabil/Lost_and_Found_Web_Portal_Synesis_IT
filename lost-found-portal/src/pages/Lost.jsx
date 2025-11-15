@@ -1,5 +1,5 @@
 // src/pages/Lost.jsx
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { store } from '../utils/storage'
 import ItemCard from '../components/ItemCard'
@@ -157,7 +157,7 @@ export default function Lost(){
       }catch(err){
         try{ window.alert(err?.message || String(err)) }catch(e){ /* ignore */ }
         return
-      }    const next = [saved, ...items]
+      }    const next = [...items, saved]
     setItems(next)
     store.set(KEY_LOST, next)
 

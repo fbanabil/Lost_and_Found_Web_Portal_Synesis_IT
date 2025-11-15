@@ -59,6 +59,9 @@ namespace Lost_And_Found_Web_Portal.Core.Services
             {
                 if(dto.PhotoBase64 != null) dto.PhotoBase64 =await _imageConverter.ConvertImageToBase64Async(dto.PhotoBase64, webRootPath);
             }
+
+            lostItemToShowDTOs = lostItemToShowDTOs.OrderByDescending(li => li.CreatedAt).ToList();
+
             return lostItemToShowDTOs;
         }
 
@@ -71,6 +74,7 @@ namespace Lost_And_Found_Web_Portal.Core.Services
             {
                 if(dto.PhotoBase64 != null) dto.PhotoBase64 = await _imageConverter.ConvertImageToBase64Async(dto.PhotoBase64, webRootPath);
             }
+            lostItemToShowDTOs = lostItemToShowDTOs.OrderBy(li => li.CreatedAt).ToList();
             return lostItemToShowDTOs;
         }
 

@@ -86,7 +86,7 @@ export default function Found(){
       return
     }
 
-    const next = [saved, ...items]
+    const next = [...items, saved]
     setItems(next)
     store.set(KEY_FOUND, next)
 

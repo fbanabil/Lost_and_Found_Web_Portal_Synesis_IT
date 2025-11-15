@@ -196,7 +196,7 @@ export function ChatProvider({ children }){
           ownerName: otherParticipantName || 'User',
         },
         customTitle: `Chat with ${otherParticipantName || 'User'}`,
-        messages: [], // Messages will be loaded separately when thread is clicked
+        messages: [], 
         lastRead: {},
         updatedAt: new Date(backendThread.lastUpdatedAt).getTime(),
         otherName: otherParticipantName,
@@ -209,23 +209,19 @@ export function ChatProvider({ children }){
   }, [backendThreads, user?.id])
 
   const getThreadById = useCallback((id) => {
-    // Find backend thread by ID
     const backendThread = backendThreads.find(t => t.chatThreadId === id || t.chatThreadId == id)
     if (backendThread) {
-  const currentUserId = user?.id || user?.email // Use ID or email as fallback
+  const currentUserId = user?.id || user?.email 
       
-  // Determine the other participant (not the current user)
-  // Try ID/email match first, then fallback to name match
+ 
   let isUserSender = matchesCurrentUser(backendThread.senderId)
   if (!isUserSender && !matchesCurrentUser(backendThread.receiverId)) {
-    // If neither ID matches, try name matching - assume user is sender if name matches
     isUserSender = matchesCurrentUserByName(backendThread.senderName)
   }
   const otherParticipantId = isUserSender ? backendThread.receiverId : backendThread.senderId
   const otherParticipantName = isUserSender ? backendThread.receiverName : backendThread.senderName
-  // Debug logging: when resolving a single thread by id
+
   try {
-    // eslint-disable-next-line no-console
     console.log('[ChatContext] getThreadById:', id, {
       senderId: backendThread.senderId,
       senderName: backendThread.senderName,
@@ -248,7 +244,7 @@ export function ChatProvider({ children }){
           ownerName: otherParticipantName || 'User',
         },
         customTitle: `Chat with ${otherParticipantName || 'User'}`,
-        messages: [], // Messages will be loaded separately when needed
+        messages: [], 
         lastRead: {},
         updatedAt: new Date(backendThread.lastUpdatedAt).getTime(),
         otherName: otherParticipantName,
@@ -318,7 +314,7 @@ export function ChatProvider({ children }){
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.accessToken}`
         },
-        body: JSON.stringify(finalPayload)
+        body: JSON.stringify(payload)
       })
 
       if (!response.ok) {
