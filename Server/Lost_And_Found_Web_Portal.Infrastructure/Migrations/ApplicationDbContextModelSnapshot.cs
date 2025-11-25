@@ -17,6 +17,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("L&D_Web_Portal_Schema")
                 .HasAnnotation("ProductVersion", "9.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -82,7 +83,9 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FoundItems", (string)null);
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("FoundItems", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.LostItem", b =>
@@ -149,7 +152,9 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LostItems", (string)null);
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("LostItems", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.Message", b =>
@@ -178,27 +183,11 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasKey("MessageId");
 
-                    b.ToTable("Messages", (string)null);
-                });
+                    b.HasIndex("SenderId");
 
-            modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.MessageReceipt", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.HasIndex("ThreadId");
 
-                    b.Property<Guid>("MessageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("ReadAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("RecipientId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MessageReceipts", (string)null);
+                    b.ToTable("Messages", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.Notification", b =>
@@ -225,7 +214,11 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notifications", (string)null);
+                    b.HasIndex("FoundItemId");
+
+                    b.HasIndex("NotificationReceiver");
+
+                    b.ToTable("Notifications", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.ThreadMembers", b =>
@@ -250,7 +243,9 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasIndex("ThreadId");
 
-                    b.ToTable("ThreadMembers", (string)null);
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ThreadMembers", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.Threads", b =>
@@ -272,7 +267,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasKey("ThreadId");
 
-                    b.ToTable("Threads", (string)null);
+                    b.ToTable("Threads", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities.ApplicationRole", b =>
@@ -300,7 +295,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", (string)null);
+                    b.ToTable("AspNetRoles", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities.ApplicationUser", b =>
@@ -369,7 +364,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("AspNetUsers", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -393,7 +388,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", (string)null);
+                    b.ToTable("AspNetRoleClaims", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
@@ -417,7 +412,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims", (string)null);
+                    b.ToTable("AspNetUserClaims", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
@@ -438,7 +433,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins", (string)null);
+                    b.ToTable("AspNetUserLogins", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
@@ -453,7 +448,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", (string)null);
+                    b.ToTable("AspNetUserRoles", "L&D_Web_Portal_Schema");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -472,7 +467,55 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", (string)null);
+                    b.ToTable("AspNetUserTokens", "L&D_Web_Portal_Schema");
+                });
+
+            modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.FoundItem", b =>
+                {
+                    b.HasOne("Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.LostItem", b =>
+                {
+                    b.HasOne("Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.Message", b =>
+                {
+                    b.HasOne("Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Lost_And_Found_Web_Portal.Core.Domain.Entities.Threads", null)
+                        .WithMany()
+                        .HasForeignKey("ThreadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.Notification", b =>
+                {
+                    b.HasOne("Lost_And_Found_Web_Portal.Core.Domain.Entities.FoundItem", null)
+                        .WithMany()
+                        .HasForeignKey("FoundItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("NotificationReceiver")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lost_And_Found_Web_Portal.Core.Domain.Entities.ThreadMembers", b =>
@@ -481,6 +524,12 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Migrations
                         .WithMany("ThreadMembers")
                         .HasForeignKey("ThreadId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Lost_And_Found_Web_Portal.Core.Domain.IdentityEntities.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Thread");

@@ -1,6 +1,8 @@
 using Lost_And_Found_Web_Portal.Api.Hubs;
 using Lost_And_Found_Web_Portal.Api.Middleware;
 using Lost_And_Found_Web_Portal.Api.StartupExtensions;
+using Lost_And_Found_Web_Portal.Infrastructure.DbContext;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureServices(builder);
 
 var app = builder.Build();
+
+using var serrviceScope= app.Services.CreateScope();
+using var dbContext= serrviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+dbContext?.Database.Migrate();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -18,10 +25,11 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    //app.UseSwagger();
-    //app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseCors("ProdCors");
 }
+
 app.UseStaticFiles();
 
 app.UseHttpsRedirection();

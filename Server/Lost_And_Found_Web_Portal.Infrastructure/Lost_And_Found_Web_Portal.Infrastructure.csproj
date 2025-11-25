@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Lost_And_Found_Web_Portal.Core\Lost_And_Found_Web_Portal.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

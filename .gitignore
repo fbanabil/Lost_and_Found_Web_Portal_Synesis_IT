@@ -89,3 +89,9 @@ Server\Lost_And_Found_Web_Portal.Infrastructure\obj
 Server\Lost_And_Found_Web_Portal.Infrastructure\bin
 Server\Lost_And_Found_Web_Portal.Core\bin
 Server\Lost_And_Found_Web_Portal.Api\bin
+
+# Ignore publish settings files
+*.publishSettings
+**/WebDeploy.publishSettings
+Server/Lost_And_Found_Web_Portal.Api/*.publishSettings
+**/publishProfiles

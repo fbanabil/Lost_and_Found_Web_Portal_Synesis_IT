@@ -1,2 +1,2 @@
-const base_url = "https://localhost:7238";
+const base_url = "https://lostandfoundwebportal.runasp.net";
 export { base_url };

@@ -1,5 +1,7 @@
 # Lost and Found Web Portal
 
+🌐 **Live Demo:** [https://lostandfoundwebportal.netlify.app/](https://lostandfoundwebportal.netlify.app/)
+
 A comprehensive, full-stack web application designed to bridge the gap between people who have lost items and those who have found them. This modern platform combines the power of React's dynamic frontend with ASP.NET Core's robust backend architecture to create a seamless, secure, and user-friendly experience for managing lost and found items.
 
 ## 🌟 What Makes This Special?
@@ -21,7 +23,7 @@ To create a digital ecosystem that transforms the traditionally frustrating expe
 - **Smart Search & Filtering**: Powerful search engine with filters by category, date, location, and item characteristics
 - **Item Status Tracking**: Real-time updates on item status (pending, resolved)
 
-### 💬 Real-time Communication Hub
+### 💬 Real-time Communication Hub (SignalR)
 
 - **Instant Messaging**: Direct chat system between item owners and finders
 - **Thread Management**: Organized conversation threads

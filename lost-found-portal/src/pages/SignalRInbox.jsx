@@ -27,6 +27,9 @@ export default function SignalRInbox() {
     backendUserId
   } = useSignalRChat()
 
+  const [refreshKey, setRefreshKey] = useState(0)
+  const forceRefresh = () => setRefreshKey(prev => prev + 1)
+
   const [params] = useSearchParams()
   const nav = useNavigate()
 
@@ -80,7 +83,7 @@ export default function SignalRInbox() {
 
   const myThreads = useMemo(() => {
     return getThreadsFor(user?.email)
-  }, [user, getThreadsFor])
+  }, [user, getThreadsFor, refreshKey, messages])
 
   useEffect(() => {
     if (!paramId && myThreads.length > 0) {
@@ -100,6 +103,18 @@ export default function SignalRInbox() {
     }
   }, [connectionStatus, myThreads, loadThreadMessages])
 
+  // Periodic refresh to ensure messages are up to date
+  useEffect(() => {
+    if (connectionStatus === 'Connected' && activeId) {
+      const interval = setInterval(() => {
+        loadThreadMessages(activeId)
+        forceRefresh()
+      }, 5000) // Refresh every 5 seconds
+
+      return () => clearInterval(interval)
+    }
+  }, [connectionStatus, activeId, loadThreadMessages])
+
   useEffect(() => {
     if (activeId && connectionStatus === 'Connected') {
       loadThreadMessages(activeId)
@@ -113,14 +128,23 @@ export default function SignalRInbox() {
     }
   }, [activeId, connectionStatus, loadThreadMessages, joinThread, leaveThread])
 
+  const [messageUpdateTrigger, setMessageUpdateTrigger] = useState(0)
+
   const activeMessages = useMemo(() => {
     if (!activeId) return []
     return messages[activeId] || []
-  }, [activeId, messages])
+  }, [activeId, messages, messageUpdateTrigger])
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [activeMessages.length])
+  }, [activeMessages.length, messageUpdateTrigger])
+
+  // Force re-render when messages change
+  useEffect(() => {
+    if (activeId && messages[activeId]) {
+      setMessageUpdateTrigger(prev => prev + 1)
+    }
+  }, [messages, activeId])
 
   useEffect(() => {
     if (active?.id) {

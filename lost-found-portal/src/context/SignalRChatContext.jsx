@@ -54,7 +54,7 @@ export function SignalRChatProvider({ children }) {
 
     try {
       const newConnection = new HubConnectionBuilder()
-        .withUrl(`${base_url}/chathub`, {
+        .withUrl("https://lostandfoundwebportal.runasp.net/chathub", {
           accessTokenFactory: () => user?.accessToken
         })
         .withAutomaticReconnect()
@@ -144,6 +144,7 @@ export function SignalRChatProvider({ children }) {
         setMessages(prev => {
           const currentMessages = prev[threadId] || []
 
+          // Less aggressive deduplication for real-time updates
           if (
             newMessage.id &&
             currentMessages.some(m => m.id === newMessage.id)
@@ -151,13 +152,15 @@ export function SignalRChatProvider({ children }) {
             return prev
           }
 
-          const isDuplicateByContent = currentMessages.some(m => {
+          // Only check for duplicates in the last 5 messages
+          const recentMessages = currentMessages.slice(-5)
+          const isDuplicateByContent = recentMessages.some(m => {
             const sameText = m.text === newMessage.text
             const sameSender =
               String(m.senderId || '') === String(newMessage.senderId || '')
             const mTime = m.sentAtTime || m.ts || 0
             const sameTimestamp =
-              Math.abs(mTime - newMessage.sentAtTime) < 3000 
+              Math.abs(mTime - newMessage.sentAtTime) < 1000 // Reduced to 1 second
             return sameText && sameSender && sameTimestamp
           })
 
@@ -173,21 +176,24 @@ export function SignalRChatProvider({ children }) {
             }
           )
 
-          setBackendThreads(prevThreads =>
-            prevThreads.map(thread => {
-              const key = String(
-                thread.ThreadId || thread.threadId || thread.id
-              )
-              if (key === threadId) {
-                return {
-                  ...thread,
-                  messages: updatedMessages,
-                  lastActivity: new Date().toISOString()
+          // Update threads immediately with new message
+          setTimeout(() => {
+            setBackendThreads(prevThreads =>
+              prevThreads.map(thread => {
+                const key = String(
+                  thread.ThreadId || thread.threadId || thread.id
+                )
+                if (key === threadId) {
+                  return {
+                    ...thread,
+                    messages: updatedMessages,
+                    lastActivity: new Date().toISOString()
+                  }
                 }
-              }
-              return thread
-            })
-          )
+                return thread
+              })
+            )
+          }, 0)
 
           return {
             ...prev,
@@ -273,10 +279,17 @@ export function SignalRChatProvider({ children }) {
             return aTime - bTime
           })
 
-        setMessages(prev => ({
-          ...prev,
-          [threadId]: processedMessages
-        }))
+        setMessages(prev => {
+          const newState = {
+            ...prev,
+            [threadId]: processedMessages
+          }
+          // Force state update
+          setTimeout(() => {
+            setBackendThreads(current => [...current])
+          }, 0)
+          return newState
+        })
 
         setBackendThreads(prevThreads =>
           prevThreads.map(thread => {
@@ -363,7 +376,7 @@ export function SignalRChatProvider({ children }) {
 
     try {
       const response = await fetch(
-        `${base_url}/ChatBox/GetSortedThreads`,
+        "https://lostandfoundwebportal.runasp.net/ChatBox/GetSortedThreads",
         {
           method: 'GET',
           headers: {

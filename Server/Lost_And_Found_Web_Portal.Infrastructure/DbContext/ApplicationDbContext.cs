@@ -26,12 +26,13 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.DbContext
         public virtual DbSet<Threads> Threads { get; set; }
         public virtual DbSet<ThreadMembers> ThreadMembers { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<MessageReceipt> MessageReceipts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.HasDefaultSchema("L&D_Web_Portal_Schema");
 
             modelBuilder.Entity<LostItem>().ToTable("LostItems");
             modelBuilder.Entity<FoundItem>().ToTable("FoundItems");
@@ -39,7 +40,54 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.DbContext
             modelBuilder.Entity<Threads>().ToTable("Threads");
             modelBuilder.Entity<ThreadMembers>().ToTable("ThreadMembers");
             modelBuilder.Entity<Message>().ToTable("Messages");
-            modelBuilder.Entity<MessageReceipt>().ToTable("MessageReceipts");
+
+
+            modelBuilder.Entity<LostItem>()
+                .HasOne<ApplicationUser>()
+                .WithMany()
+                .HasForeignKey(li => li.OwnerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<FoundItem>()
+                .HasOne<ApplicationUser>()
+                .WithMany()
+                .HasForeignKey(fi => fi.OwnerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Notification>()
+                .HasOne<FoundItem>()
+                .WithMany()
+                .HasForeignKey(n => n.FoundItemId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+            modelBuilder.Entity<Notification>()
+                .HasOne<ApplicationUser>()
+                .WithMany()
+                .HasForeignKey(n => n.NotificationReceiver)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<ThreadMembers>()
+                .HasOne<ApplicationUser>()
+                .WithMany()
+                .HasForeignKey(tm => tm.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Message>()
+                .HasOne<Threads>()
+                .WithMany()
+                .HasForeignKey(m => m.ThreadId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Message>()
+                .HasOne<ApplicationUser>()
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

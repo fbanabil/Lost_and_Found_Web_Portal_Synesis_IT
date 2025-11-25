@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\ChatImages\Images\" />
+    <Folder Include="wwwroot\LostItems\Images\" />
   </ItemGroup>
 
   <ItemGroup>

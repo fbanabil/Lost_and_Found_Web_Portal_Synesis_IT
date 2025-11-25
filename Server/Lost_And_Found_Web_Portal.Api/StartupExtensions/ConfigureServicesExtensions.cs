@@ -90,7 +90,7 @@ namespace Lost_And_Found_Web_Portal.Api.StartupExtensions
             {
                 options.AddPolicy("DevCors", (corsBuilder) =>
                 {
-                    corsBuilder.WithOrigins("http://localhost:3000", "http://localhost:4200", "http://localhost:5173", "https://localhost:5173", "https://localhost:5175", "http://localhost:5175")
+                    corsBuilder.WithOrigins("http://localhost:3000", "http://localhost:4200", "http://localhost:5173", "https://localhost:5173", "https://localhost:5175", "http://localhost:5175", "https://lostandfoundwebportal.netlify.app")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
@@ -98,7 +98,7 @@ namespace Lost_And_Found_Web_Portal.Api.StartupExtensions
 
                 options.AddPolicy("ProdCors", (corsBuilder) =>
                 {
-                    corsBuilder.WithOrigins("http://myProductionSite.com")
+                    corsBuilder.WithOrigins("http://myProductionSite.com", "https://lostandfoundwebportal.netlify.app")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();

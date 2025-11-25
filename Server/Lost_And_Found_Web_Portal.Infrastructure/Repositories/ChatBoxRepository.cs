@@ -70,7 +70,7 @@ namespace Lost_And_Found_Web_Portal.Infrastructure.Repositories
         public async Task LastActivityUpdate(Guid threadId, DateTime presentTime)
         {
             await _dbContext.Database.ExecuteSqlRawAsync(
-                "UPDATE Threads SET LastActivity = {0} WHERE ThreadId = {1}",
+                "UPDATE [L&D_Web_Portal_Schema].[Threads] SET LastActivity = {0} WHERE ThreadId = {1}",
                 presentTime, threadId);
         }
     }
